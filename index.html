@@ -139,4 +139,96 @@
         <div class="card sales-card">
             <h2>Direct Sales Portal 🛒</h2>
             <ul id="sales-list">
-                </ul>
+                </ul>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for dynamic data loading
+
+        // Function to update weather data
+        function updateWeatherData() {
+            const weatherIcon = document.getElementById('weather-icon');
+            const weatherDesc = document.getElementById('weather-desc');
+            const temperature = document.getElementById('temperature');
+            
+            // Dummy data - in a real app, this would be an API call
+            const weatherData = {
+                icon: '☀',
+                description: 'Clear Sky',
+                temp: '32°C'
+            };
+
+            weatherIcon.textContent = weatherData.icon;
+            weatherDesc.textContent = weatherData.description;
+            temperature.textContent = weatherData.temp;
+        }
+
+        // Function to update soil data (simulating IoT)
+        function updateSoilData() {
+            const soilMoisture = document.getElementById('soil-moisture');
+            const soilPh = document.getElementById('soil-ph');
+            const soilNutrients = document.getElementById('soil-nutrients');
+            const soilLastUpdated = document.getElementById('soil-last-updated');
+            
+            // Dummy data
+            const soilData = {
+                moisture: '68%',
+                ph: '6.9',
+                nutrients: 'Optimal'
+            };
+
+            soilMoisture.textContent = soilData.moisture;
+            soilPh.textContent = soilData.ph;
+            soilNutrients.textContent = soilData.nutrients;
+            soilLastUpdated.textContent = new Date().toLocaleTimeString();
+        }
+
+        // Function to populate crop prices
+        function populateCropPrices() {
+            const priceList = document.getElementById('price-list');
+            const prices = [
+                { crop: 'Wheat', price: '₹2,125 / quintal' },
+                { crop: 'Rice', price: '₹2,300 / quintal' },
+                { crop: 'Corn', price: '₹1,950 / quintal' }
+            ];
+
+            priceList.innerHTML = ''; // Clear existing list
+            prices.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = <strong>${item.crop}:</strong> ${item.price};
+                priceList.appendChild(li);
+            });
+        }
+
+        // Function to populate sales listings
+        function populateSalesListings() {
+            const salesList = document.getElementById('sales-list');
+            const sales = [
+                { item: '100 kg Organic Tomatoes', status: 'Available' },
+                { item: '50 bags of Potatoes', status: 'Available' },
+                { item: '15 kg Fresh Mangoes', status: 'Sold' }
+            ];
+
+            salesList.innerHTML = ''; // Clear existing list
+            sales.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = <strong>${item.item}:</strong> <span style="color: ${item.status === 'Available' ? 'green' : 'red'};">${item.status}</span>;
+                salesList.appendChild(li);
+            });
+        }
+
+        // Initial data load and periodic updates
+        document.addEventListener('DOMContentLoaded', () => {
+            updateWeatherData();
+            updateSoilData();
+            populateCropPrices();
+            populateSalesListings();
+
+            // Refresh data every 30 seconds
+            setInterval(updateWeatherData, 30000);
+            setInterval(updateSoilData, 30000);
+        });
+    </script>
+</body>
+</html>
