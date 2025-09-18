@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        /* Dashboard Cards */
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .weather-card, .soil-card, .price-card, .sales-card {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Specific Section Styles */
+        .weather-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+        .weather-info div {
+            flex: 1;
+        }
+        .weather-info .icon {
+            font-size: 3em;
+            color: #FFA726; /* Sun emoji color */
+        }
+        .weather-info .temp {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .soil-data p, .price-list li, .sales-list li {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+        
+        /* Responsive Grid */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .weather-card, .soil-card, .price-card, .sales-card {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🌾 AgriConnect Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="card weather-card">
+            <h2>Live Weather Alerts ☁</h2>
+            <div class="weather-info">
+                <div>
+                    <span id="weather-icon" class="icon">☀</span>
+                    <p id="weather-desc">Clear Sky</p>
+                </div>
+                <div>
+                    <p class="temp"><span id="temperature">30°C</span></p>
+                    <p>📍 Location: Your Farm</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card soil-card">
+            <h2>Soil Health Analysis 🌱</h2>
+            <div class="soil-data">
+                <p><strong>Moisture:</strong> <span id="soil-moisture">65%</span></p>
+                <p><strong>pH Level:</strong> <span id="soil-ph">6.8</span></p>
+                <p><strong>Nutrient Levels:</strong> <span id="soil-nutrients">Good</span></p>
+                <small>Last updated: <span id="soil-last-updated">--</span></small>
+            </div>
+        </div>
+
+        <div class="card price-card">
+            <h2>Crop Price Tracking 💰</h2>
+            <ul id="price-list">
+                </ul>
+        </div>
+
+        <div class="card sales-card">
+            <h2>Direct Sales Portal 🛒</h2>
+            <ul id="sales-list">
+                </ul>
